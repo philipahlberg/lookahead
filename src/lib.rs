@@ -1,7 +1,7 @@
 use std::collections::VecDeque;
 use std::iter::Fuse;
 
-/// Create a lookahead iterator from `iterable`.
+/// Create a [`Lookahead`] iterator over the given iterable.
 pub fn lookahead<I>(iterable: I) -> Lookahead<I::IntoIter>
 where
     I: IntoIterator,
