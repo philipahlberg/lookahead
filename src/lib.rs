@@ -45,7 +45,7 @@ impl<I> Iterator for Lookahead<I>
 	fn size_hint(&self) -> (usize, Option<usize>) {
 		let queued = self.queue.len();
 		let (lower, upper) = self.iter.size_hint();
-		(lower + queued, upper.and_then(|n| upper.map(|m| n + m)))
+		(lower + queued, upper.map(|n| n + queued))
 	}
 }
 
@@ -84,5 +84,16 @@ mod tests {
         let mut iter = lookahead(inner);
         let _ = iter.next();
         assert_eq!(iter.lookahead(0), Some(&&2));
+    }
+
+    #[test]
+    fn size_hint() {
+        let inner = [1, 2].into_iter();
+        let mut iter = lookahead(inner);
+        assert_eq!(iter.size_hint(), (2, Some(2)));
+        let _ = iter.lookahead(1);
+        assert_eq!(iter.size_hint(), (2, Some(2)));
+        let _ = iter.next();
+        assert_eq!(iter.size_hint(), (1, Some(1)));
     }
 }
