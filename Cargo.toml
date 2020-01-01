@@ -1,9 +1,13 @@
 [package]
 name = "lookahead"
 version = "0.1.0"
-authors = ["philipahlberg <philipahlberg@gmail.com>"]
-edition = "2018"
-description = "An iterator with arbitrary lookahead"
 license = "MIT"
+edition = "2018"
+authors = ["philipahlberg <philipahlberg@gmail.com>"]
+description = "An iterator with arbitrary lookahead."
+repository = "https://github.com/philipahlberg/lookahead"
+documentation = "https://docs.rs/lookahead/"
+keywords = ["iterator", "data-structure", "lookahead"]
+categories = ["algorithms", "rust-patterns"]
 
 [dependencies]
