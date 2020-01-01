@@ -3,5 +3,7 @@ name = "lookahead"
 version = "0.1.0"
 authors = ["philipahlberg <philipahlberg@gmail.com>"]
 edition = "2018"
+description = "An iterator with arbitrary lookahead"
+license = "MIT"
 
 [dependencies]
