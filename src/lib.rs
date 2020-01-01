@@ -49,6 +49,10 @@ impl<I> Iterator for Lookahead<I>
 	}
 }
 
+impl<I> ExactSizeIterator for Lookahead<I>
+    where I: ExactSizeIterator
+{}
+
 #[cfg(test)]
 mod tests {
     use super::*;
