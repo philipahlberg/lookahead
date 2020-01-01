@@ -1,6 +1,7 @@
 use std::collections::VecDeque;
 use std::iter::Fuse;
 
+/// Create a lookahead iterator from `iterable`.
 pub fn lookahead<I>(iterable: I) -> Lookahead<I::IntoIter>
     where I: IntoIterator {
     Lookahead {
@@ -15,6 +16,11 @@ pub struct Lookahead<I: Iterator> {
 }
 
 impl<I: Iterator> Lookahead<I> {
+    /// Return a reference to the item `n` iterations ahead without advancing the iterator.
+    /// 
+    /// When `n` is `0`, it is equivalent to [`Peekable::peek`].
+    ///
+    /// [`Peekable::peek`]: https://doc.rust-lang.org/std/iter/struct.Peekable.html#method.peek
 	pub fn lookahead(&mut self, n: usize) -> Option<&I::Item> {
         let enqueued = self.queue.len();
 		if n >= enqueued {
