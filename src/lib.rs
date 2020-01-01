@@ -10,6 +10,7 @@ pub fn lookahead<I>(iterable: I) -> Lookahead<I::IntoIter>
     }
 }
 
+#[derive(Clone, Debug)]
 pub struct Lookahead<I: Iterator> {
 	iter: Fuse<I>,
 	queue: VecDeque<I::Item>,
