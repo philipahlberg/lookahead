@@ -1,17 +1,6 @@
 use std::collections::VecDeque;
 use std::iter::Fuse;
 
-/// Create a [`Lookahead`] iterator over the given iterable.
-pub fn lookahead<I>(iterable: I) -> Lookahead<I::IntoIter>
-where
-    I: IntoIterator,
-{
-    Lookahead {
-        iter: iterable.into_iter().fuse(),
-        queue: VecDeque::new(),
-    }
-}
-
 #[derive(Clone, Debug)]
 pub struct Lookahead<I: Iterator> {
     iter: Fuse<I>,
