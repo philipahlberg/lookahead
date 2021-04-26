@@ -46,6 +46,21 @@ impl<I: Iterator> Lookahead<I> {
     /// When `n` is `0`, it is equivalent to [`Peekable::peek`].
     ///
     /// [`Peekable::peek`]: https://doc.rust-lang.org/std/iter/struct.Peekable.html#method.peek
+    /// 
+    /// # Examples
+    /// 
+    /// Basic usage:
+    /// 
+    /// ```
+    /// let xs = [1, 2, 3];
+    /// 
+    /// let inner = xs.into_iter();
+    /// let mut iter = Lookahead::new(inner);
+    /// 
+    /// // `.lookahead(0)` peeks at the item that would otherwise have been returned from `.next()`
+    /// assert_eq!(iter.lookahead(0), Some(&&1));
+    /// 
+    /// ```
     pub fn lookahead(&mut self, n: usize) -> Option<&I::Item> {
         let enqueued = self.queue.len();
         if n >= enqueued {
