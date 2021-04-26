@@ -97,28 +97,28 @@ mod tests {
 
     #[test]
     fn zero() {
-        let inner = [1, 2].into_iter();
+        let inner = [1, 2].iter();
         let mut iter = Lookahead::new(inner);
         assert_eq!(iter.lookahead(0), Some(&&1));
     }
 
     #[test]
     fn one() {
-        let inner = [1, 2].into_iter();
+        let inner = [1, 2].iter();
         let mut iter = Lookahead::new(inner);
         assert_eq!(iter.lookahead(1), Some(&&2));
     }
 
     #[test]
     fn two() {
-        let inner = [1, 2].into_iter();
+        let inner = [1, 2].iter();
         let mut iter = Lookahead::new(inner);
         assert_eq!(iter.lookahead(2), None);
     }
 
     #[test]
     fn next() {
-        let inner = [1, 2].into_iter();
+        let inner = [1, 2].iter();
         let mut iter = Lookahead::new(inner);
         let _ = iter.next();
         assert_eq!(iter.lookahead(0), Some(&&2));
@@ -126,7 +126,7 @@ mod tests {
 
     #[test]
     fn size_hint() {
-        let inner = [1, 2].into_iter();
+        let inner = [1, 2].iter();
         let mut iter = Lookahead::new(inner);
         assert_eq!(iter.size_hint(), (2, Some(2)));
         let _ = iter.lookahead(1);
