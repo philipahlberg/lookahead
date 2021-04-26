@@ -52,6 +52,8 @@ impl<I: Iterator> Lookahead<I> {
     /// Basic usage:
     ///
     /// ```
+    /// use lookahead::Lookahead;
+    /// 
     /// let xs = [1, 2, 3];
     ///
     /// let inner = xs.into_iter();
